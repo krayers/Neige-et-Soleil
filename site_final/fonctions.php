@@ -18,9 +18,9 @@
 	{
 		if ($con != null ) { mysqli_close($con); }
 	}
-	function verif_admin ($pseudo, $mdp)
+	function verif_connexion ($pseudo, $mdp)
 	{
-		$requete = "select * from Admin where pseudonyme ='".$pseudo."' and mdpasse ='".$mdp."';";
+		$requete = "select * from Utilisateurs where pseudonyme ='".$pseudo."' and mdpasse ='".$mdp."';";
 		$con = connexion ();
 		if ($con==null) {
 			return null;
