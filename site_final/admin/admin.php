@@ -1,15 +1,11 @@
 <html>
 	<head>
 		<title>Administrateur</title>
-		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="style2.css">
 		<link href="bootstrap.min.css" rel="stylesheet">
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	</head>
 	<body>
-		<div id="banner1">
-			<div id="logo">
-				<img src="soleil.png" alt="" />
-			</div>
 		</div>
 
 <div id="banner2">
@@ -26,18 +22,25 @@
 			</div>
 
     <!-- Login Form -->
-    <form>
-      <input type="text" id="login" class="fadeIn second" name="pseudonyme" placeholder="login">
-      <input type="password" id="password" class="fadeIn second" name="mdpasse" placeholder="password">
-      <input type="submit" class="fadeIn fourth" value="Connexion">
-    </form>
+		<div class="form-group">
+  <label for="pseudonyme">Utilisateur :</label></br>
+  <input type="text" class="form-control" id="pseudonyme" name="pseudonyme">
+</div>
+<div class="form-group">
+  <label for="mdpasse">Mot de passe :</label>
+  <input type="password" class="form-control" id="mdpasse" name="mdpasse"></br>
+	<input type="submit" name="SeConnecter" class="fadeIn fourth" value="Connexion">
+</div>
 
     <!-- Remind Passowrd -->
-
+		<div id="formFooter">
+		      <a class="underlineHover" href="http://localhost/sio1a_2018/site_final/index.php">Retour</a>
+		    </div>
   </div>
 </div>
 <?php
-require_once ("fonctions.php");
+require_once ("fonctions2.php");
+session_name('Admin');
 session_start(); //demarrage session
 if (isset($_POST['SeConnecter']))
 {

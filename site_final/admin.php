@@ -1,57 +1,48 @@
 <html>
 	<head>
-		<title>Connexion</title>
+		<title>Administrateur</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<link href="bootstrap.min.css" rel="stylesheet">
 	</head>
 	<body>
-		<div id="banner1">
-			<div id="logo">
-				<img src="soleil.png" alt="" />
-			</div>
-		</div>
-		<nav class="nav nav-pills nav-fill">
-<a class="nav-link nav-item" href="index.php">Accueil</a>
-<a class="nav-link active nav-item" href="connexion.php">Connexion</a>
-<a class="nav-link nav-item" href="contact.php">Contact</a>
-<a class="nav-link nav-item" href="news.php">News</a>
-</nav>
+
 
 <div id="banner2">
 </div>
 
 <div id="contenuprincipal">
-	<p><form id='login' action='connexion.php' method='post' accept-charset='UTF-8'>
+	<center>
+	<p><form id='login' action='admin.php' method='post' accept-charset='UTF-8'>
 <fieldset >
 <legend>Pseudo</legend>
 <input type='hidden' name='submitted' id='submitted' value='1'/>
 
 <label for='pseudonyme' >Pseudo:</label>
-<input type='text' name='pseudonyme' id='pseudo'  maxlength="50" />
+<input type='text' class="form-group" name='pseudonyme' id='pseudo'  maxlength="50" />
 
 <label for='mdpasee' >Mot de passe:</label>
-<input type='password' name='mdpasse' id='mdpasse' maxlength="50" />
+<input type='password' class="form-group" name='mdpasse' id='mdpasse' maxlength="50" />
 
-<input type='submit' name='SeConnecter' value='Connexion' />
-<li><a href="inscription.php"><FONT face="Verdana">Créer un compte</font></a></li>
-
+<input type='submit' name='SeConnecter' value='Connexion' /></br>
+<a href="index.php"><FONT face="Verdana">Retour</font></a>
+</center>
 
 </fieldset>
 </form>
 <?php
 require_once ("fonctions.php");
-session_name('user');
+session_name('admin');
 session_start(); //demarrage session
 if (isset($_POST['SeConnecter']))
 {
 $pseudo = $_POST['pseudonyme'];
 $mdp = $_POST['mdpasse'];
-$resultat = verif_connexion ($pseudo, $mdp);
+$resultat = verif_admin ($pseudo, $mdp);
 //var_dump($resultat);
 if ($resultat == null) {
 	echo "<br/> Veuillez vérifier vos identifiants";
 } else {
-	echo "<br/> Bienvenue ".$resultat["nomUtili"]." ".$resultat["prenomUtili"];
+	echo
 
 
 	$_SESSION['pseudonyme']=$resultat['pseudonyme'];
@@ -64,16 +55,16 @@ if(isset($_SESSION['idUtili']))
 <nav id="nav">
 	<h2>Navigation</h2>
 	<ul>
-		<?php
-		echo "<br/> <a href='connexion.php?page=1'> Modifier mes informations </a>";
-		echo "<br/> <a href='connexion.php?page=2'> Mon compte </a>";
-		echo "<br/> <a href='connexion.php?page=3'> Mes reservations </a>";
-		echo "<br/> <a href='connexion.php?page=4'> Mes contrats </a>";
-		echo "<br/> <a href='connexion.php?page=5'> Tous les appartements </a>";
+	<?php
+		echo "<br/> <a href='admin.php?page=1'> Modifier mes informations </a>";
+		echo "<br/> <a href='admin.php?page=2'> Mon compte </a>";
+		echo "<br/> <a href='admin.php?page=3'> Mes reservations </a>";
+		echo "<br/> <a href='admin.php?page=4'> Mes contrats </a>";
+		echo "<br/> <a href='admin.php?page=5'> Tous les appartements </a>";
 		echo "<br/> <a href='connexion.php?page=6'> Réserver un appartement </a>";
 		echo "<br/> <a href='connexion.php?page=7'> Contrats pré-enregistrés </a>";
 		echo "<br/> <a href='connexion.php?page=8'> Nouveau contrat de gestion </a>";
-		echo "<br/> <a href='connexion.php?page=9'> Se Déconnecter</a>";
+		echo "<br/> <a href='admin.php?page=9'> Se Déconnecter</a>";
 
 ?></ul>
 </nav>
@@ -134,7 +125,7 @@ switch ($page) {
 			break;
 			case 2 :
     		//appel de la fonction
-    		$lesLignes=selectUtilisateur($_SESSION['idUtili']);
+    		$lesLignes=selectAdmin($_SESSION['idUtili']);
     		//var_dump($lesLignes);
 
     		echo "
@@ -147,9 +138,6 @@ switch ($page) {
     		foreach ($lesLignes as $uneLigne) {
     			echo "<tr><td>".$uneLigne['idUtili']."</td>
     			<td>".$uneLigne['pseudonyme']."</td>
-    			<td>".$uneLigne['nomUtili']."</td>
-    			<td>".$uneLigne['prenomUtili']."</td>
-    			<td>".$uneLigne['codepostUtili'].", ".$uneLigne['adresseUtili']."</td>
     			</tr>";
     		}
     		echo "</table>";
@@ -367,7 +355,7 @@ $numR = $_POST['idReservation'];
 							setcookie('pass_hache', '');
 
 
-							header('Location: index.php');
+							header('Location: admin.php');
 
 }
 }
