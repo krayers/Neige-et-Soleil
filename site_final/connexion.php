@@ -34,6 +34,7 @@
 
 <input type='submit' name='SeConnecter' value='Connexion' />
 <li><a href="inscription.php"><FONT face="Verdana">Créer un compte</font></a></li>
+	<li><a href="admin.php"><FONT face="Verdana">Accès Administrateur</font></a></li>
 
 
 </fieldset>
@@ -201,6 +202,32 @@ $numR = $_POST['idReservation'];
 
 
 					break;
+					case 4 :
+						//appel de la fonction
+						$lesLignes=selectContratV($_SESSION['idUtili']);
+						//var_dump($lesLignes);
+
+						echo "
+						<table border=1>
+						<tr><td> Numéro du contrat </td><td>Prix du Logement par Jour </td><td>Prix du Logement par Saison </td><td>Date debut </td>
+						<td> Date fin</td><td> Numéro utilisateur </td>
+						<td>Adresse</td><td>Ville</td><td> Description</td></tr>
+						";
+						//parcourir les lignes et les afficher dans la table
+						foreach ($lesLignes as $uneLigne) {
+							echo "<tr><td>".$uneLigne['idContratGestV']."</td>
+							<td>".$uneLigne['prixgestcontratJ']."</td>
+							<td>".$uneLigne['prixgestionS']."</td>
+							<td>".$uneLigne['DateDebut']."</td>
+							<td>".$uneLigne['DateFin']."</td>
+							<td>".$uneLigne['idUtili']."</td>
+							<td>".$uneLigne['Adresse']."</td>
+							<td>".$uneLigne['ville']."</td>
+							<td>".$uneLigne['description']."</td>
+							</tr>";
+						}
+						echo "</table>";
+						break;
 					case 5 :
 					//appel de la fonction
 					$lesLignes=selectAllObjetsVente();
@@ -291,14 +318,15 @@ $numR = $_POST['idReservation'];
 
 				    		echo "
 				    		<table border=1>
-				    		<tr><td> Numéro du contrat </td><td>Prix du contrat </td><td>Date debut </td>
+				    		<tr><td> Numéro du contrat </td><td>Prix du Logement par Jour </td><td>Prix du Logement par Saison </td><td>Date debut </td>
 				    		<td> Date fin</td><td> Numéro utilisateur </td>
 				    		<td>Adresse</td><td>Ville</td><td> Description</td></tr>
 				    		";
 				    		//parcourir les lignes et les afficher dans la table
 				    		foreach ($lesLignes as $uneLigne) {
 				    			echo "<tr><td>".$uneLigne['idContratGest']."</td>
-				    			<td>".$uneLigne['PrixGestContrat']."</td>
+				    			<td>".$uneLigne['prixgestcontratJ']."</td>
+									<td>".$uneLigne['prixgestionS']."</td>
 				    			<td>".$uneLigne['DateDebut']."</td>
 				    			<td>".$uneLigne['DateFin']."</td>
 									<td>".$uneLigne['idUtili']."</td>
@@ -312,8 +340,9 @@ $numR = $_POST['idReservation'];
 							case 8 :
 							?>
 							<form method="post" action="">
-								Prix du contrat : <input type="number" name="PrixGestContrat"> </br>
-								Date fin contrat : <input type="date" name="DateDebut"> </br>
+								Prix du contrat/jour : <input type="number" name="prixgestcontratJ"> </br>
+								Prix du contrat/saison : <input type="number" name="prixgestionS"> </br>
+								Date debut contrat : <input type="date" name="DateDebut"> </br>
 								Date fin contrat : <input type="date" name="DateFin"> </br>
 								Identifiant propriétaire : <input type="number" name="idUtili"> </br>
 								Adresse appartement : <input type="text" name="adresseUtili"> </br>
@@ -328,14 +357,15 @@ $numR = $_POST['idReservation'];
 							if (isset($_POST['submit']))
 							{
 
-								$datede = $_POST['PrixGestContrat'];
+								$datede = $_POST['prixgestcontratJ'];
+								$dateded = $_POST['prixgestionS'];
 								$commentaire = $_POST['DateDebut'];
 								$lieulivraison = $_POST['DateFin'];
 								$typeoper2 = $_POST['adresseUtili'];
 								$typeoper3 = $_POST['villeUtili'];
 								$typeoper4 = $_POST['description'];
 
-								if ($datede&&$commentaire&&$lieulivraison&&$typeoper2&&$typeoper3&&$typeoper4)
+								if ($datede&&$dateded&&$commentaire&&$lieulivraison&&$typeoper2&&$typeoper3&&$typeoper4)
 									{
 
 
@@ -343,13 +373,13 @@ $numR = $_POST['idReservation'];
 								$con = mysqli_connect("localhost","root","","GESTION_N_S");
 
 							//On créé la requête
-							$sql = "insert into ContratGestion values (null,'".$datede."','".$commentaire."','".$lieulivraison."', ".$_SESSION['idUtili'].",'".$typeoper2."','".$typeoper3."','".$typeoper4."');";
+							$sql = "insert into ContratGestion values (null,'".$datede."','".$commentaire."','".$lieulivraison."', ".$_SESSION['idUtili'].",'".$typeoper2."','".$typeoper3."','".$typeoper4."','".$dateded."');";
 
 							// On envoie la requête
 							$resultats= mysqli_query($con, $sql);
 								// on ferme la connexion
 							 mysqli_close($con);
-							 echo "Le contrat a été pré-ajouté avec succès !</br>";
+							 echo $sql;
 							 echo "Rendez-vous à l'agence pour confirmer la réalisation du contrat</br>";
 						 }else echo "Veuillez saisir tous les champs !";
 

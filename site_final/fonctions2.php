@@ -33,6 +33,42 @@
 		}
 		deconnexion($con);
 	}
+	function verif_connexion ($pseudo, $mdp)
+	{
+		$requete = "select * from Utilisateurs where pseudonyme ='".$pseudo."' and mdpasse ='".$mdp."';";
+		$con = connexion ();
+		if ($con==null) {
+			return null;
+		}
+		else
+		{
+			$resultat = mysqli_query($con, $requete);
+			$ligne = mysqli_fetch_assoc($resultat);
+			return $ligne;
+		}
+		deconnexion($con);
+	}
+	function selectAdmin($idUtili)
+	{
+		$requete="select * from admin where idUtili = ".$idUtili.";";
+		$con=connexion();
+		if($con==null)
+		{
+			return null;
+		}
+		else {
+			//execution de la requete et recupérer les tuples
+			$resultats= mysqli_query($con, $requete);
+			//déclaration d'un tableau vide
+			$lesLignes= array();
+			//parcours des resultats et leur insertion dans le tableau lesLignes
+			while ($ligne = mysqli_fetch_assoc($resultats))
+			{
+				$lesLignes[]=$ligne;
+			}
+			return $lesLignes;
+		}
+	}
 	function selectUtilisateur($idUtili)
 	{
 		$requete="select * from Utilisateurs where idUtili = ".$idUtili.";";
@@ -54,9 +90,9 @@
 			return $lesLignes;
 		}
 	}
-	function selectReservUtili($idUtili)
+	function selectReserv()
 	{
-		$requete="select * from Reservation where idUtili = ".$idUtili.";";
+		$requete="select * from Reservation;";
 		$con=connexion();
 		if($con==null)
 		{
@@ -78,6 +114,27 @@
 	function selectAllObjetsVente()
 	{
 		$requete="select * from appartements ;";
+		$con=connexion();
+		if($con==null)
+		{
+			return null;
+		}
+		else {
+			//execution de la requete et recupérer les tuples
+			$resultats= mysqli_query($con, $requete);
+			//déclaration d'un tableau vide
+			$lesLignes= array();
+			//parcours des resultats et leur insertion dans le tableau lesLignes
+			while ($ligne = mysqli_fetch_assoc($resultats))
+			{
+				$lesLignes[]=$ligne;
+			}
+			return $lesLignes;
+		}
+	}
+	function selectAllUtili()
+	{
+		$requete="select * from utilisateurs ;";
 		$con=connexion();
 		if($con==null)
 		{
@@ -119,9 +176,30 @@
 		}
 	}
 
-	function selectContratsGest($idUtili)
+	function selectContratsGest()
 	{
-		$requete="select * from ContratGestion where idUtili = ".$idUtili.";";
+		$requete="select * from ContratGestion;";
+		$con=connexion();
+		if($con==null)
+		{
+			return null;
+		}
+		else {
+			//execution de la requete et recupérer les tuples
+			$resultats= mysqli_query($con, $requete);
+			//déclaration d'un tableau vide
+			$lesLignes= array();
+			//parcours des resultats et leur insertion dans le tableau lesLignes
+			while ($ligne = mysqli_fetch_assoc($resultats))
+			{
+				$lesLignes[]=$ligne;
+			}
+			return $lesLignes;
+		}
+	}
+	function selectContratV()
+	{
+		$requete="select * from ContratV;";
 		$con=connexion();
 		if($con==null)
 		{

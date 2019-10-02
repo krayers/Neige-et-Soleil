@@ -1,8 +1,8 @@
-
 <html>
 	<head>
-		<title>Accueil</title>
-		<link rel="stylesheet" type="text/css" href="style.css">
+		<title>Contact</title>
+		<link href="style.css" rel="stylesheet">
+		<link href="bootstrap.min.css" rel="stylesheet">
 	</head>
 	<body>
 		<div id="banner1">
@@ -10,14 +10,13 @@
 				<img src="soleil.png" alt="" />
 			</div>
 		</div>
-		<div id="menu">
-			<ul>
-				<li><a href="index.php"><FONT face="Verdana">Accueil</font></a></li>
-					<li><a href="connexion.php"><FONT face="Verdana">Connexion</font></a></li>
-						<li><a href="contact.php"><FONT face="Verdana">Contact</font></a></li>
-							<li><a href="news.php"><FONT face="Verdana">News</font></a></li>
-			</ul>
-		</div>
+		<nav class="nav nav-pills nav-fill">
+<a class="nav-link nav-item" href="index.php">Accueil</a>
+<a class="nav-link nav-item" href="connexion.php">Connexion</a>
+<a class="nav-link active nav-item" href="contact.php">Contact</a>
+<a class="nav-link nav-item" href="news.php">News</a>
+</nav>
+
 
 		<div id="banner2">
 		</div>
@@ -28,57 +27,21 @@
       <p> - 09 56 48 38 90 (appel non surtaxé) </br>
         - Ouvert du lundi au samedi de 9h à 19h </br>
         - Dimanche : 9h à 18h
-			</br></br><h3><strong>Par message :</strong></h3>
-  
-			<form name="contactform" method="post" action="envoie.php">
-<table width="450px">
-<tr>
-<td valign="top">
-<label for="prenom">Prénom</label>
-</td>
-<td valign="top">
-<input  type="text" name="prenom" maxlength="50" size="30">
-</td>
-</tr>
-<tr>
-<td valign="top">
-<label for="nom">Nom</label>
-</td>
-<td valign="top">
-<input  type="text" name="nom" maxlength="50" size="30">
-</td>
-</tr>
-<tr>
-<td valign="top">
-<label for="email">Adresse mail</label>
-</td>
-<td valign="top">
-<input  type="text" name="email" maxlength="80" size="30">
-</td>
-</tr>
-<tr>
-<td valign="top">
-<label for="tel">Telephone</label>
-</td>
-<td valign="top">
-<input  type="text" name="tel" maxlength="30" size="30">
-</td>
-</tr>
-<tr>
-<td valign="top">
-<label for="msg">Message</label>
-</td>
-<td valign="top">
-<textarea  name="msg" maxlength="1000" cols="25" rows="6"></textarea>
-</td>
-</tr>
-<tr>
-<td colspan="2" style="text-align:center">
-<input type="submit" value="Valider"></a>
-</td>
-</tr>
-</table>
+
+			<div class="form-style-2">
+<div class="form-style-2-heading">Contactez Nous :</div><br/>
+<form action="" method="post">
+<label for="Prénom"><span>Prenom <span class="required"></span></span><input type="text" class="input-field" name="prenom" /></label><br/>
+<label for="Nom"><span>Nom <span class="required"></span></span><input type="text" class="input-field" name="nom"  />
+</label><br/>
+<label for="Téléphone"><span> Téléphone <span class="required"></span></span><input type="number" class="input-field" name="telephone"/>
+</label><br/>
+<label for="email"><span>Email <span class="required"></span></span><input type="email" class="input-field" name="email"  /></label><br/>
+<label for="Message"><span>Message <span class="required"></span></span><textarea name="Message" class="textarea-field"></textarea></label><br/>
+
+<label><span> </span><input type="submit" value="Envoyer" /></label>
 </form>
+</div>
 
 
 </div>

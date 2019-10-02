@@ -1,8 +1,8 @@
-
 <html>
 	<head>
-		<title>Accueil</title>
-		<link rel="stylesheet" type="text/css" href="style.css">
+		<title>News</title>
+		<link href="style.css" rel="stylesheet">
+		<link href="bootstrap.min.css" rel="stylesheet">
 	</head>
 	<body>
 		<div id="banner1">
@@ -10,18 +10,14 @@
 				<img src="soleil.png" alt="" />
 			</div>
 		</div>
-		<div id="menu">
-			<ul>
-				<li><a href="index.php"><FONT face="Verdana">Accueil</font></a></li>
-					<li><a href="connexion.php"><FONT face="Verdana">Connexion</font></a></li>
-						<li><a href="contact.php"><FONT face="Verdana">Contact</font></a></li>
-							<li><a href="news.php"><FONT face="Verdana">News</font></a></li>
-			</ul>
-		</div>
-
+		<nav class="nav nav-pills nav-fill">
+<a class="nav-link nav-item" href="index.php">Accueil</a>
+<a class="nav-link nav-item" href="connexion.php">Connexion</a>
+<a class="nav-link nav-item" href="contact.php">Contact</a>
+<a class="nav-link active nav-item" href="news.php">News</a>
+</nav>
 		<div id="banner2">
 		</div>
-
 		<div id="contenuprincipal">
 		<center>
 			<h2>L'actualité Neige & Soleil : </h2>
