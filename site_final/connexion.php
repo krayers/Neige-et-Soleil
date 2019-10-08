@@ -12,7 +12,7 @@
 		</div>
 		<nav class="nav nav-pills nav-fill">
 <a class="nav-link nav-item" href="index.php">Accueil</a>
-<a class="nav-link active nav-item" href="connexion.php">Connexion</a>
+<a class="nav-link active nav-item" href="connexion.php">Espace Membre</a>
 <a class="nav-link nav-item" href="contact.php">Contact</a>
 <a class="nav-link nav-item" href="news.php">News</a>
 </nav>
@@ -23,7 +23,7 @@
 <div id="contenuprincipal">
 	<p><form id='login' action='connexion.php' method='post' accept-charset='UTF-8'>
 <fieldset >
-<legend>Pseudo</legend>
+<center><legend>Connectez vous</legend>
 <input type='hidden' name='submitted' id='submitted' value='1'/>
 
 <label for='pseudonyme' >Pseudo:</label>
@@ -31,16 +31,18 @@
 
 <label for='mdpasee' >Mot de passe:</label>
 <input type='password' name='mdpasse' id='mdpasse' maxlength="50" />
-</br>
-Type compte : <select name="typeC">
+</br></center>
+<center>
+Vous êtes ? : <select name="typeC">
 <option value="">Veuillez choisir le type de compte</option>
 <option value="proprietaire">Propriétaire</option>
 <option value="utilisateurs">Utilisateur</option>
-</select>
+</select></br></br>
 
-<input type='submit' name='SeConnecter' value='Connexion' /></br></br>
-<li><a href="inscription.php"><FONT face="Verdana">Créer un compte</font></a></li>
-*
+<input type='submit' name='SeConnecter' value='Connexion'/></br></br>
+<a href="inscription.php">
+<FONT face="Verdana">Nouveau Membre<font></a>
+</font></FONT></center>
 
 </fieldset>
 </form>

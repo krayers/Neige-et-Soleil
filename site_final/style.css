@@ -3,6 +3,16 @@ body {
 	margin: 0;
 }
 
+#fond {
+
+  margin:0;
+  padding:0;
+  background: url(https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.forbes.fr%2Fwp-content%2Fuploads%2F2018%2F11%2F13-1-740x370.jpg&imgrefurl=https%3A%2F%2Fwww.forbes.fr%2Fluxe%2Fchalets-de-luxe-pour-addicts-de-montagne%2F&docid=pnCewYrgHsKtkM&tbnid=DZgZj6XFP3qPqM%3A&vet=10ahUKEwjJ2Z2k3Y3lAhVLyxoKHb8XDisQMwhQKAEwAQ..i&w=740&h=370&bih=657&biw=1366&q=chalets&ved=0ahUKEwjJ2Z2k3Y3lAhVLyxoKHb8XDisQMwhQKAEwAQ&iact=mrc&uact=8) no-repeat center fixed; 
+  -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+  background-size: cover; /* version standardisée */
+
+}
+
 #banner1 {
 	display: block;
 	background-color: #caeeff;

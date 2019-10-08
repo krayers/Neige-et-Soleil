@@ -17,7 +17,7 @@
 		</div>
 		<nav class="nav nav-pills nav-fill">
 <a class="nav-link nav-item" href="index.php">Accueil</a>
-<a class="nav-link nav-item" href="connexion.php">Connexion</a>
+<a class="nav-link nav-item" href="connexion.php">Espace Membre</a>
 <a class="nav-link nav-item" href="contact.php">Contact</a>
 <a class="nav-link nav-item" href="news.php">News</a>
 </nav>

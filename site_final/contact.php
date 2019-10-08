@@ -25,25 +25,26 @@
 		</div>
 
 		<div id="contenuprincipal">
-      <center><h1>Comment nous contacter ?</h1></center>
+      <center><h1>Comment nous contacter ?</h1>
 		</br><h3><strong>Par téléphone :</strong></h3>
       <p> - 09 56 48 38 90 (appel non surtaxé) </br>
         - Ouvert du lundi au samedi de 9h à 19h </br>
-        - Dimanche : 9h à 18h
+        - Dimanche : 9h à 18h</center>
 
 			<div class="form-style-2">
-<div class="form-style-2-heading">Contactez Nous</div>
+<div class="form-style-2-heading">
+<center><h2>Contactez Nous</h2></center></div>
 <form action="" method="post">
-<label for="Prénom"><span>Prenom <span class="required"></span></span><input type="text" class="input-field" name="prenom" /></label>
+<center><label for="Prénom"><span>Prenom <span class="required"></span></span><input type="text" class="input-field" name="prenom" /></label></br>
 <label for="Nom"><span>Nom <span class="required"></span></span><input type="text" class="input-field" name="nom"  />
-</label>
-<label for="Téléphone"><span> Téléphone <span class="required"></span></span><input type="number" class="input-field" name="telephone"/>
-</label>
-<label for="email"><span>Email <span class="required"></span></span><input type="email" class="input-field" name="email"  /></label>
-<label for="Message"><span>Message <span class="required"></span></span><textarea name="Message" class="textarea-field"></textarea></label>
+</label></br>
+<label for="Téléphone"><span> Téléphone <span class="required"></span></span><input type="text" class="input-field" name="telephone"/>
+</label></br>
+<label for="email"><span>Email <span class="required"></span></span><input type="email" class="input-field" name="email"  /></label></br>
+<label for="Message"><span>Message <span class="required"></span></span><textarea name="Message" class="textarea-field"></textarea></label></br>
 
 <label><span> </span><input type="submit" value="Envoyer" /></label>
-</form>
+</center></form>
 </div>
 
 
