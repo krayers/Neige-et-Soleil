@@ -33,15 +33,20 @@
 
 	    </br>
 			<form method="post" action="inscription.php">
-        Pseudo : <input type="text" name="pseudonyme"> </br>
-        Nom : <input type="text" name="nomUtili"></br>
-				Prenom : <input type="text" name="prenomUtili"></br>
-				Code Postal : <input type="number" name="codepostUtili"></br>
-				Email : <input type="email" name="emailUtili"></br>
-				Adresse : <input type="text" name="adresseUtili"></br>
-				Date de naissance : <input type="date" name="DateNaissUtili"></br>
-				Mot de passe : <input type="password" name="mdpasseUtili"></br>
-				Confirmez le mot de passe : <input type="password" name="repeatpassword"><br><br>
+				Type compte : <select name="typeC">
+    <option value="">Veuillez choisir le type de compte</option>
+    <option value="proprietaire">Propriétaire</option>
+    <option value="utilisateurs">Utilisateur</option>
+	</select></br></br>
+        Pseudo : <input type="text" name="pseudonyme"> </br></br>
+        Nom : <input type="text" name="nomUtili"></br></br>
+				Prenom : <input type="text" name="prenomUtili"></br></br>
+				Code Postal : <input type="number" name="codepostUtili"></br></br>
+				Email : <input type="email" name="emailUtili"></br></br>
+				Adresse : <input type="text" name="adresseUtili"></br></br>
+				Date de naissance : <input type="date" name="DateNaissUtili"></br></br>
+				Mot de passe : <input type="password" name="mdpasseUtili"></br></br>
+				Confirmez le mot de passe : <input type="password" name="repeatpassword"><br><br></br>
         <input type="submit" name="submit" value="Valider">
 
     </form>
@@ -50,33 +55,32 @@
 
 if (isset($_POST['submit']))
 {
-
+$TypeC = htmlspecialchars(trim($_POST['typeC']));
 $Nom = htmlspecialchars(trim($_POST['nomUtili']));
 $Adresse = htmlspecialchars(trim($_POST['adresseUtili']));
 $Prenom = htmlspecialchars(trim($_POST['prenomUtili']));
 $Pseudo = htmlspecialchars(trim($_POST['pseudonyme']));
 $Email = htmlspecialchars(trim($_POST['emailUtili']));
-$Datenais = htmlspecialchars(trim($_POST['emailUtili']));
+$Datenais = htmlspecialchars(trim($_POST['DateNaissUtili']));
 $Codepost = htmlspecialchars(trim($_POST['codepostUtili']));
 $password = htmlspecialchars(trim($_POST['mdpasseUtili']));
 $repeatpassword = htmlspecialchars(trim($_POST['repeatpassword']));
 
-if ($Nom&&$Adresse&&$Pseudo&&$Codepost&&$Datenais&&$Prenom&&$Email&&$password&&$repeatpassword)
+if ($TypeC&&$Nom&&$Adresse&&$Pseudo&&$Codepost&&$Datenais&&$Prenom&&$Email&&$password&&$repeatpassword)
         {
         if (strlen($password)>=6)
             {
                 if ($password==$repeatpassword)
                 {
             // On crypte le mot de passe
-                $password = md5($password);
+                
 
  // on se connecte à MySQL et on sélectionne la base
     $con = mysqli_connect("localhost","root","","GESTION_N_S");
 
  //On créé la requête
- $sql = "insert into Utilisateurs (idUtili,pseudonyme,mdpasse,nomUtili,prenomUtili,adresseUtili,codepostUtili,DateNaissUtili,emailUtili) values (null ,'".$_POST["pseudonyme"]."',password('".$_POST["mdpasseUtili"]."'),'".$_POST["nomUtili"]."','".$_POST["prenomUtili"]."','".$_POST["adresseUtili"]."',
+ $sql = "insert into ".$_POST["typeC"]." values (null ,'".$_POST["pseudonyme"]."',password('".$_POST["mdpasseUtili"]."'),'".$_POST["nomUtili"]."','".$_POST["prenomUtili"]."','".$_POST["adresseUtili"]."',
  '".$_POST["codepostUtili"]."','".$_POST["DateNaissUtili"]."','".$_POST["emailUtili"]."');";
-echo $sql;
  $sql = mysqli_query($con,$sql);
        // on ferme la connexion
 mysqli_close($con);

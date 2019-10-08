@@ -33,9 +33,9 @@
 		}
 		deconnexion($con);
 	}
-	function verif_connexion ($pseudo, $mdp)
+	function verif_connexion ($pseudo, $mdp, $typeC)
 	{
-		$requete = "select * from Utilisateurs where pseudonyme ='".$pseudo."' and mdpasse ='".$mdp."';";
+		$requete = "select * from ".$typeC." where pseudonyme ='".$pseudo."' and mdpasse ='".$mdp."';";
 		$con = connexion ();
 		if ($con==null) {
 			return null;
@@ -90,6 +90,28 @@
 			return $lesLignes;
 		}
 	}
+	function selectUtilisateurP($idUtili)
+	{
+		$requete="select * from proprietaire where idUtiliP = ".$idUtili.";";
+		$con=connexion();
+		if($con==null)
+		{
+			return null;
+		}
+		else {
+			//execution de la requete et recupérer les tuples
+			$resultats= mysqli_query($con, $requete);
+			//déclaration d'un tableau vide
+			$lesLignes= array();
+			//parcours des resultats et leur insertion dans le tableau lesLignes
+			while ($ligne = mysqli_fetch_assoc($resultats))
+			{
+				$lesLignes[]=$ligne;
+			}
+			return $lesLignes;
+		}
+	}
+
 	function selectReservUtili($idUtili)
 	{
 		$requete="select * from Reservation where idUtili = ".$idUtili.";";
@@ -157,7 +179,7 @@
 
 	function selectContratsGest($idUtili)
 	{
-		$requete="select * from ContratGestion where idUtili = ".$idUtili.";";
+		$requete="select * from ContratGestion where idUtiliP = ".$idUtili.";";
 		$con=connexion();
 		if($con==null)
 		{
@@ -178,7 +200,7 @@
 	}
 	function selectContratV($idUtili)
 	{
-		$requete="select * from ContratV where idUtili = ".$idUtili.";";
+		$requete="select * from ContratV where idUtiliP = ".$idUtili.";";
 		$con=connexion();
 		if($con==null)
 		{
